@@ -3,16 +3,18 @@ import Web3 from "web3";
 import {
     contractAddress,
 } from "../../utils/constant";
-import './header.css';
+import './info.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 // import logo from "../../asset/images/logo.png";
 import logo from "../../asset/images/logo.png";
 import menuIcon from "../../asset/images/menuIcon.png";
-function Header() {
+import { Container } from "react-bootstrap";
+import Badge from 'react-bootstrap/Button';
+function Info() {
 
     let accountAd;
-    const [account, setAccount] = useState("Connect Wallet");
+    const [account, setAccount] = useState("Connect");
     const [showLinks, setShowLinks] = useState(false);
 
     function formatThousands(num) {
@@ -88,35 +90,28 @@ function Header() {
 
     return (
         <div className="container-fluid">
-            <div className="Navbar" style={{ position: "relative", zIndex: "1" }}>
-                <div className="rightSide">
-                    <span href="#home">
-                        <img className="logo" src={logo} alt="Logo" style={{ padding: "0px 10px" }} />
-                    </span>
-                    <span className="footer-title">BINANCE SMARTBANK</span>
-                </div>
-                <div className="leftSide">
-                    <div className="links" id={showLinks ? "hidden" : ""}>
-                        <a>
-                            <button
-                                className="btn btn-warning"
-                                id="connect"
-                                onClick={loadWeb3}
-                            >
-                                {account}
-                            </button>
-                        </a>
-                        <a href="#">
-                            English | USD
-                        </a>
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm-8">
+                        <div className="info">
+                            <p>Total income: based on your tarrif plan<span> (from 5% to 8% daily)</span></p>
+                            <p>Basic interest rate:<span> +0.5% every 24 hours</span> - only for new deposits</p>
+                            <p>Minimal deposit: <span>0.05 BNB</span>, no maximal limit</p>
+                            <p>Earnings <span>every moment</span>, withdraw <span>any time </span>(if you use capitalization of interest you can withdraw only after end of your deposit)</p>
+                        </div>
                     </div>
-                    <button onClick={() => setShowLinks(!showLinks)}>
-                        <img src={menuIcon} />
-                    </button>
+                    <div className="col-sm-4">
+                        <span className="infostaked">Total BNB Staked
+                            <span className='badge' bg="light" text="dark">contract</span>
+                        </span>
+                        <span className="infostakedvalue">0</span>
+                        <span className="infostaked">Total Contract Balance</span>
+                        <span className="infostakedvalue">0</span>
+                    </div>
                 </div>
-            </div >
+            </div>
         </div >
     );
 }
 
-export default Header;
+export default Info;

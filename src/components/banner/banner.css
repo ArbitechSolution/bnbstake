@@ -1,0 +1,83 @@
+
+.container-fluid{
+    font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    
+    padding: 0;
+    margin: 0;
+}
+.bannercard{
+    border-radius: .3rem;
+    background-color: black;
+    margin: 20px 0px;
+    border: 1px solid #7e6331;
+}
+.bannercard .row span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+.bannercard .row .stakeinput{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    color: #fff;
+    background-color: #444;
+    border-color: #444;
+    padding: .5rem 0rem;
+    border-radius: .3rem;
+}
+.bannercard button{
+    margin: 10px;
+}
+/* .bannercard .row{
+    display: flex;
+} */
+.bannerprofit{
+   display: flex;
+   color: white;
+   padding: 3px 0 0;
+   margin: 0;
+   font-size: 10pt;
+}
+
+.bannervalue{
+    display: flex;
+    color: #FFB72D;
+    font-size: 20pt;
+    font-weight: 600;
+    padding: 0 0 3px;
+    margin: 0;
+}
+.plan-box-name {
+    position: absolute;
+    margin: 0;
+    padding: 4px 8px;
+    background: #f50f0f;
+    color: white;
+    left: 16px;
+    top: 1px;
+    border-top-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    font-size: 120px;
+}
+#plan{
+    position: relative;
+    left: 12.9px;
+    top: -0.3px;
+    width: 60px;
+    height: 30px;
+    background-color: rgb(69,69,69);
+    margin-left: -13px;
+    border-radius: 5px 0 5px 0;
+    color: white;
+}
+@media (max-width: 1092px) {
+    
+}
+
+@media (max-width: 600px) {
+    
+   
+    
+}

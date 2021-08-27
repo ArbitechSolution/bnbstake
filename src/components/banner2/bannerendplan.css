@@ -1,0 +1,84 @@
+
+.container-fluid{
+    font-family: Lato,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    padding: 0;
+    margin: 0;
+}
+
+.bannerendcard{
+    border-radius: .3rem;
+    background-color: black;
+    margin: 20px 0px;
+    border: 1px solid #00BC8C;
+}
+.bannerendcard .row span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 5px;
+}
+.bannerendcard .row .stakeinput{
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+    color: #fff;
+    background-color: #444;
+    border-color: #444;
+    padding: .5rem 0rem;
+    border-radius: .3rem;
+}
+.bannerendcard button{
+    margin: 10px;
+    background-color: #00BC8C;
+    border: #00BC8C;
+}
+
+.bannerendcard button:hover{
+    background-color: #034131;
+    border: #00BC8C;
+    color: white;
+}
+
+/* .bannerendcard .row{
+    display: flex;
+} */
+.bannerendprofit{
+   display: flex;
+   color: white;
+   padding: 3px 0 0;
+   margin: 0;
+   font-size: 10pt;
+}
+
+.bannerendvalue{
+    display: flex;
+    color: #00BC8C;
+    font-size: 20pt;
+    font-weight: 600;
+    padding: 0 0 3px;
+    margin: 0;
+}
+
+.bannerendcard .bannerendnote{
+   line-height: 1;
+   margin: 0 0 5px;
+   padding: 0;
+   color: wheat;
+   font-size: small;
+   font-style: italic;
+}
+.container .row .bannerendnwarnings{
+    display: flex;
+    align-items: flex-start;
+    font-size: 10pt;
+    color: white;
+}
+@media (max-width: 1092px) {
+    
+}
+
+@media (max-width: 600px) {
+    
+   
+    
+}

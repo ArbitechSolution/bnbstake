@@ -7,11 +7,11 @@
     width: 100%;
     height: auto;
     display: flex;
-    background-color: rgb(75, 64, 56);
+    background-color: #222222;
 }
 
 .Navbar .leftSide{
-flex: 50%;
+flex: 70%;
 display: flex;
 justify-content: flex-end;
 align-items: center;
@@ -22,12 +22,12 @@ margin: 0px;
     max-height: 80px;
 }
 
-
 .Navbar .leftSide .links a{
     text-decoration: none;
     font-size: 15pt;
     color: white;
-    margin-right: 20px;
+    margin: 0px 8px;
+    padding: 5px;
 }
 
 .Navbar .leftSide #connect{
@@ -59,7 +59,7 @@ margin: 0px;
 }
 
 .Navbar .rightSide{
-    flex: 50%;
+    flex: 30%;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -70,13 +70,19 @@ margin: 0px;
     margin: 5px 0px 0px;
     height: 50px;
     width: auto;
+} 
+.Navbar .rightSide a{
+    padding: 0px 10px 0px;
+}
+.Navbar .rightSide .footer-title{
+    color: white;
 }
 
 /* background-color: #ddd; */
-.Navbar .leftSide a:hover{
+/* .Navbar .leftSide a:hover{
     
     color: rgb(224, 193, 17);
-}
+} */
 
 @media (max-width: 1092px) {
     
