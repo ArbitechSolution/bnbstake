@@ -94,7 +94,7 @@ function Banner() {
                     <div className="col-sm-4">
                         <div className="bannercard">
                             <div className="col-md-12" id="plan">
-                                <span>Plan 2</span>
+                                <span>Plan 1</span>
                             </div>
                             <div className="row">
                                 <div className="col-6">
@@ -180,7 +180,7 @@ function Banner() {
                     <div className="col-sm-4">
                         <div className="bannercard">
                             <div className="col-md-12" id="plan">
-                                <span>Plan 2</span>
+                                <span>Plan 3</span>
                             </div>
                             <div className="row">
                                 <div className="col-sm-6">
