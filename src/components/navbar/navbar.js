@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import {
     contractAddress,
-
+    
 } from "../../utils/constant";
 import './navbar.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,7 +16,15 @@ function Header() {
     const [account, setAccount] = useState("Connect");
     const [showLinks, setShowLinks] = useState(false);
 
-  
+    function formatThousands(num) {
+        var numbr = parseFloat(parseFloat(num).toFixed(6));
+        // console.log("num", parseFloat(numbr));
+        var values = numbr.toString().split(".");
+        return (
+            values[0].replace(/.(?=(?:.{3})+$)/g, "$&,") +
+            (values.length == 2 ? "." + values[1] : "")
+        );
+    }
 
     const loadWeb3 = async () => {
         let isConnected = false;
