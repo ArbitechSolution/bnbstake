@@ -24,7 +24,7 @@ margin: 0px;
 
 .Navbar .leftSide .links a{
     text-decoration: none;
-    font-size: 15pt;
+    /* font-size: 15pt; */
     color: white;
     margin: 0px 8px;
     padding: 5px;

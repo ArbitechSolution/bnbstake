@@ -163,7 +163,7 @@ function Banner() {
                                 <div className="col-6">
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
-                                    <input className="stakeinput" />
+                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="10" type="text"  value="0"/>
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">In 14 days you will get</span>
