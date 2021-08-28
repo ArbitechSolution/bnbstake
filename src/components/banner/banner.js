@@ -4,7 +4,8 @@ import {
     contractAddress,
     abi,
     tokenAddres,
-    tokenAbi
+    tokenAbi,
+    refDefaultAddress
 } from "../../utils/constant";
 import './banner.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,6 +18,7 @@ function Banner() {
 
     let accountAd;
     const [account, setAccount] = useState("Connect");
+    const [upline, setUpline] = useState(refDefaultAddress);
 
     const [dailyProfit1, set1dailyProfit] = useState(0);
     const [totalReturn1, set1TotalReturn] = useState(0);
@@ -55,29 +57,116 @@ function Banner() {
         }
     };
 
+    const Deposite = async (e) => {
+        try {
+            console.log("deposite", e.target.name)
+            const name = e.target.name;
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            if (name === 'planone') {
+                let dailyprofit1 = await contract.methods.Deposite(enter1AmountCall, upline, days1)
+                    .send({
+                        from: account
+                    })
+                    .then(async (output) => {
+                        toast.success("Transaction Completed");
+                    }).catch((e) => {
+                        console.log("response", e);
+                        toast.error(e.message);
+                    });
+            } else if (name === 'plantwo') {
+                let dailyprofit1 = await contract.methods.Deposite(enter1AmountCall, upline, days1)
+                    .send({
+                        from: account
+                    })
+                    .then(async (output) => {
+                        toast.success("Transaction Completed");
+                    }).catch((e) => {
+                        console.log("response", e);
+                        toast.error(e.message);
+                    });
+            }
+            else if (name === 'planthree') {
+                let dailyprofit1 = await contract.methods.Deposite(enter1AmountCall, upline, days1)
+                    .send({
+                        from: account
+                    })
+                    .then(async (output) => {
+                        toast.success("Transaction Completed");
+                    }).catch((e) => {
+                        console.log("response", e);
+                        toast.error(e.message);
+                    });
+            }
+        } catch (error) {
+            console.log("response", error);
+            // alert("Error while checking locked account");
+        }
+    };
+
+    const checkReward = async (e) => {
+        try {
+            console.log("deposite", e.target.name)
+            const name = e.target.name;
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            if (name === 'planone') {
+                let dailyprofit1 = await contract.methods.Deposite(enter1AmountCall, upline, days1)
+                    .send({
+                        from: account
+                    })
+                    .then(async (output) => {
+                        toast.success("Transaction Completed");
+                    }).catch((e) => {
+                        console.log("response", e);
+                        toast.error(e.message);
+                    });
+            } else if (name === 'plantwo') {
+                let dailyprofit1 = await contract.methods.Deposite(enter1AmountCall, upline, days1)
+                    .send({
+                        from: account
+                    })
+                    .then(async (output) => {
+                        toast.success("Transaction Completed");
+                    }).catch((e) => {
+                        console.log("response", e);
+                        toast.error(e.message);
+                    });
+            }
+            else if (name === 'planthree') {
+                let dailyprofit1 = await contract.methods.Deposite(enter1AmountCall, upline, days1)
+                    .send({
+                        from: account
+                    })
+                    .then(async (output) => {
+                        toast.success("Transaction Completed");
+                    }).catch((e) => {
+                        console.log("response", e);
+                        toast.error(e.message);
+                    });
+            }
+        } catch (error) {
+            console.log("response", error);
+            // alert("Error while checking locked account");
+        }
+    };
+
     const enter1AmountCall = async (e) => {
         try {
-            set1EnterAmount(e.target.value);
-
+            const name = e.target.name;
+            console.log("name", name);
+            if (name === 'first_input') {
+                set1EnterAmount(e.target.value);
+            } else if (name === 'second_input') {
+                set2EnterAmount(e.target.value);
+            } else if (name === 'third_input') {
+                set3EnterAmount(e.target.value);
+            }
         } catch (error) {
             console.log("Error while checking locked account");
         }
     };
-    const enter2AmountCall = async (e) => {
-        try {
-            set2EnterAmount(e.target.value);
-        } catch (error) {
-            console.log("Error while checking locked account");
-        }
-    }
 
-    const enter3AmountCall = async (e) => {
-        try {
-            set3EnterAmount(e.target.value);
-        } catch (error) {
-            console.log("Error while checking locked account");
-        }
-    }
     function formatThousands(num) {
         var numbr = parseFloat(parseFloat(num).toFixed(6));
         // console.log("num", parseFloat(numbr));
@@ -184,7 +273,9 @@ function Banner() {
                                 <div className="col-6">
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
-                                    <input className="stakeinput" onChange={enter1AmountCall} />
+                                    <input className="stakeinput"
+                                        name="first_input"
+                                        onChange={enter1AmountCall} />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">In 14 days you will get</span>
@@ -192,7 +283,9 @@ function Banner() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-block btn-grad" id="ImageColor">
+                                <button type="button" className="btn btn-block btn-grad" id="ImageColor"
+                                    name="planone"
+                                    onClick={Deposite}>
                                     Stake BNB
                                 </button>
                             </div>
@@ -229,7 +322,8 @@ function Banner() {
                                     {/* <span className="bannervalue">0%</span> */}
                                     <input className="stakeinput"
                                         placeholder="0"
-                                        onChange={enter2AmountCall}
+                                        name="second_input"
+                                        onChange={enter1AmountCall}
                                     />
                                 </div>
                                 <div className="col-6">
@@ -238,7 +332,9 @@ function Banner() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-grad btn-block">
+                                <button type="button" className="btn btn-grad btn-block"
+                                    name="plantwo"
+                                    onClick={Deposite}>
                                     Stake BNB
                                 </button>
                             </div>
@@ -274,7 +370,8 @@ function Banner() {
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
                                     <input className="stakeinput"
-                                        onChange={enter2AmountCall}
+                                        name="third_input"
+                                        onChange={enter1AmountCall}
                                     />
                                 </div>
                                 <div className="col-6">
@@ -283,7 +380,9 @@ function Banner() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-grad btn-block">
+                                <button type="button" className="btn btn-grad btn-block"
+                                    name="planthree"
+                                    onClick={Deposite}>
                                     Stake BNB
                                 </button>
                             </div>
