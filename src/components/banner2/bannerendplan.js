@@ -93,7 +93,7 @@ function BannerEndPlan() {
                 <div className="row">
                     <div className="col-sm-4">
                         <div className="bannerendcard">
-                            <div className="col-md-12" id="plan">
+                            <div className="col-md-12" id="plan1">
                                 <span>Plan 4</span>
                             </div>
                             <div className="row">
@@ -128,7 +128,7 @@ function BannerEndPlan() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-secondry btn-block">
+                                <button type="button" className="btn btn-grad btn-block">
                                     Stake BNB
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
@@ -137,7 +137,7 @@ function BannerEndPlan() {
                     </div>
                     <div className="col-sm-4">
                         <div className="bannerendcard">
-                            <div className="col-md-12" id="plan">
+                            <div className="col-md-12" id="plan1">
                                 <span>Plan 5</span>
                             </div>
                             <div className="row">
@@ -172,7 +172,7 @@ function BannerEndPlan() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-secondry btn-block">
+                                <button type="button" className="btn btn-grad btn-block">
                                     Stake BNB
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
@@ -181,7 +181,7 @@ function BannerEndPlan() {
                     </div>
                     <div className="col-sm-4">
                         <div className="bannerendcard">
-                            <div className="col-md-12" id="plan">
+                            <div className="col-md-12" id="plan1">
                                 <span>Plan 6</span>
                             </div>
                             <div className="row">
@@ -216,7 +216,7 @@ function BannerEndPlan() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-secondry btn-block">
+                                <button type="button" className="btn btn-grad btn-block">
                                     Stake BNB
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>

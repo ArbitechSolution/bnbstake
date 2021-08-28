@@ -10,15 +10,15 @@ function Header() {
                             <div className="row">
                                 <div className="col-3">
                                     <span className="refferaltext">Total Referral Earned</span>
-                                    <span className="refferalvalue">0</span>
+                                    <span className="bannervalue">0</span>
                                 </div>
                                 <div className="col-3">
                                     <span className="refferaltext">Total Referral Withdrawn</span>
-                                    <span className="refferalvalue">0</span>
+                                    <span className="bannervalue">0</span>
                                 </div>
                                 <div className="col-3">
                                     <span className="refferaltext">Invited Users by You</span>
-                                    <span className="refferalvalue">0</span>
+                                    <span className="bannervalue">0</span>
                                 </div>
                                 <div className="col-3">
                                     <span className="bannerprofit">In 14 days you will get</span>
@@ -38,7 +38,7 @@ function Header() {
                                         <button
 
                                             type="button"
-                                            className="btn btn-warning btn-block"
+                                            className="btn btn-grad btn-block"
                                             style={{
                                                 margin: "10px",
                                                 padding: "0.8rem 0rem",
