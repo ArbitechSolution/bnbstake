@@ -94,7 +94,7 @@ function BannerEndPlan() {
                     <div className="col-sm-4">
                         <div className="bannerendcard">
                             <div className="col-md-12" id="plan">
-                                <span>Plan 2</span>
+                                <span>Plan 4</span>
                             </div>
                             <div className="row">
                                 <div className="col-6">
@@ -138,7 +138,7 @@ function BannerEndPlan() {
                     <div className="col-sm-4">
                         <div className="bannerendcard">
                             <div className="col-md-12" id="plan">
-                                <span>Plan 2</span>
+                                <span>Plan 5</span>
                             </div>
                             <div className="row">
                                 <div className="col-sm-6">
@@ -182,7 +182,7 @@ function BannerEndPlan() {
                     <div className="col-sm-4">
                         <div className="bannerendcard">
                             <div className="col-md-12" id="plan">
-                                <span>Plan 2</span>
+                                <span>Plan 6</span>
                             </div>
                             <div className="row">
                                 <div className="col-sm-6">

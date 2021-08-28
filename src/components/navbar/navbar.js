@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import {
     contractAddress,
+    
 } from "../../utils/constant";
 import './navbar.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -195,30 +196,40 @@ function Header() {
                         <a href="#">
                             1 BNB = $488.11
                         </a>
+                        {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-warning btn-sm active" role="button" aria-pressed="true"
                             onClick={loadWeb3}
                         >
                             PDF Guide
 
                         </a>
+                        {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-info btn-sm active" role="button" aria-pressed="true"
                             onClick={loadWeb3}
                         >
                             Help
 
                         </a>
+                        {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-success btn-sm active" role="button" aria-pressed="true"
                             onClick={loadWeb3}
                         >
                             Audit
 
                         </a>
+                        {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"
                             onClick={loadWeb3}
                         >
                             Telegram
 
                         </a>
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
                     </div>
                     <button onClick={() => setShowLinks(!showLinks)}>
                         <img src={menuIcon} />
