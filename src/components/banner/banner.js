@@ -120,7 +120,7 @@ function Banner() {
                                 <div className="col-6">
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
-                                    <input className="stakeinput" />
+                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">In 14 days you will get</span>
@@ -129,7 +129,13 @@ function Banner() {
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="button" className="btn btn-block btn-grad" id="ImageColor">
-                                    Stake BNB
+                                    <b>Stake SMS</b>
+                                </button>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="button" className="btn btn-gradd btn-block">
+                                    <b>claim reward</b>
                                 </button>
                             </div>
                         </div>
@@ -140,11 +146,11 @@ function Banner() {
                                 <span>Plan 2</span>
                             </div>
                             <div className="row">
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerprofit">Daily Profit</span>
                                     <span className="bannervalue">0%</span>
                                 </div>
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerprofit">Total Return</span>
                                     <span className="bannervalue">0%</span>
                                 </div>
@@ -163,7 +169,7 @@ function Banner() {
                                 <div className="col-6">
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
-                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="10" type="text"  value="0"/>
+                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">In 14 days you will get</span>
@@ -172,7 +178,13 @@ function Banner() {
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="button" className="btn btn-grad btn-block">
-                                    Stake BNB
+                                    <b>Stake SMS</b>
+                                </button>
+                            </div>
+
+                            <div class="d-grid gap-2">
+                                <button type="button" className="btn btn-gradd btn-block">
+                                    <b>claim reward</b>
                                 </button>
                             </div>
                         </div>
@@ -183,11 +195,11 @@ function Banner() {
                                 <span>Plan 3</span>
                             </div>
                             <div className="row">
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerprofit">Daily Profit</span>
                                     <span className="bannervalue">0%</span>
                                 </div>
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerprofit">Total Return</span>
                                     <span className="bannervalue">0%</span>
                                 </div>
@@ -206,7 +218,7 @@ function Banner() {
                                 <div className="col-6">
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
-                                    <input className="stakeinput" />
+                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="number"  />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">In 14 days you will get</span>
@@ -215,7 +227,12 @@ function Banner() {
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="button" className="btn btn-grad btn-block">
-                                    Stake BNB
+                                    <b>Stake SMS</b>
+                                </button>
+                            </div>
+                            <div class="d-grid gap-2">
+                                <button type="button" className="btn btn-gradd btn-block">
+                                    <b>claim reward</b>
                                 </button>
                             </div>
                         </div>

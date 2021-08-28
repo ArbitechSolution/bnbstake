@@ -120,7 +120,7 @@ function BannerEndPlan() {
                                 <div className="col-6">
                                     <span className="bannerendprofit">Enter Amount</span>
                                     {/* <span className="bannerendvalue">0%</span> */}
-                                    <input className="stakeinput" />
+                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerendprofit">In 14 days you will get</span>
@@ -129,7 +129,10 @@ function BannerEndPlan() {
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="button" className="btn btn-grad btn-block">
-                                    Stake BNB
+                                    <b>Stake SMS</b>
+                                </button>
+                                <button type="button" className="btn btn-gradd btn-block">
+                                    <b>claim reward</b>
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
                             </div>
@@ -141,11 +144,11 @@ function BannerEndPlan() {
                                 <span>Plan 5</span>
                             </div>
                             <div className="row">
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerendprofit">Daily Profit</span>
                                     <span className="bannerendvalue">0%</span>
                                 </div>
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerendprofit">Total Return</span>
                                     <span className="bannerendvalue">0%</span>
                                 </div>
@@ -164,7 +167,7 @@ function BannerEndPlan() {
                                 <div className="col-6">
                                     <span className="bannerendprofit">Enter Amount</span>
                                     {/* <span className="bannerendvalue">0%</span> */}
-                                    <input className="stakeinput" />
+                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerendprofit">In 14 days you will get</span>
@@ -173,7 +176,10 @@ function BannerEndPlan() {
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="button" className="btn btn-grad btn-block">
-                                    Stake BNB
+                                    <b>Stake SMS</b>
+                                </button>
+                                <button type="button" className="btn btn-gradd btn-block">
+                                    <b>claim reward</b>
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
                             </div>
@@ -185,11 +191,11 @@ function BannerEndPlan() {
                                 <span>Plan 6</span>
                             </div>
                             <div className="row">
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerendprofit">Daily Profit</span>
                                     <span className="bannerendvalue">0%</span>
                                 </div>
-                                <div className="col-sm-6">
+                                <div className="col-6">
                                     <span className="bannerendprofit">Total Return</span>
                                     <span className="bannerendvalue">0%</span>
                                 </div>
@@ -208,7 +214,7 @@ function BannerEndPlan() {
                                 <div className="col-6">
                                     <span className="bannerendprofit">Enter Amount</span>
                                     {/* <span className="bannerendvalue">0%</span> */}
-                                    <input className="stakeinput" />
+                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerendprofit">In 14 days you will get</span>
@@ -217,7 +223,10 @@ function BannerEndPlan() {
                             </div>
                             <div class="d-grid gap-2">
                                 <button type="button" className="btn btn-grad btn-block">
-                                    Stake BNB
+                                    <b>Stake SMS</b>
+                                </button>
+                                <button type="button" className="btn btn-gradd btn-block">
+                                    <b>claim reward</b>
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
                             </div>
@@ -229,7 +238,7 @@ function BannerEndPlan() {
                         1. Important: Plans return are float and daily profit for a new deposit will increase by 0.5% daily
                     </span>
                     <span className="bannerendnwarnings">
-                        2. Minimum deposit amount is 0.05 BNB and you can have multiple deposits
+                        2. Minimum deposit amount is 0.05 SMS and you can have multiple deposits
                     </span>
                     <span className="bannerendnwarnings">
                         3. Earnings every moment, withdraw instantly any time (if you did not use capitalization of interest in Plan 4, Plan 5 and Plan 6)

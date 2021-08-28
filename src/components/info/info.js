@@ -96,12 +96,12 @@ function Info() {
                         <div className="info">
                             <p>Total income: based on your tarrif plan<span> (from 5% to 8% daily)</span></p>
                             <p>Basic interest rate:<span> +0.5% every 24 hours</span> - only for new deposits</p>
-                            <p>Minimal deposit: <span>0.05 BNB</span>, no maximal limit</p>
+                            <p>Minimal deposit: <span>0.05 SMS</span>, no maximal limit</p>
                             <p>Earnings <span>every moment</span>, withdraw <span>any time </span>(if you use capitalization of interest you can withdraw only after end of your deposit)</p>
                         </div>
                     </div>
                     <div className="col-sm-4">
-                        <span className="infostaked">Total BNB Staked
+                        <span className="infostaked">Total SMS Staked
                             <span className='badge' bg="light" text="dark">contract</span>
                         </span>
                         <span className="infostakedvalue">0</span>

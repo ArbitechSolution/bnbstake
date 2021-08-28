@@ -8,7 +8,7 @@ import './navbar.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 // import logo from "../../asset/images/logo.png";
-import logo from "../../asset/images/logo.png";
+import logo1 from "../../asset/images/logo1.png";
 
 import menuIcon from "../../asset/images/menuIcon.png";
 function Navbar() {
@@ -93,7 +93,7 @@ function Navbar() {
             <div className="Navbar" style={{ position: "relative", zIndex: "1" }}>
                 <div className="rightSide">
                     <span href="#home">
-                        <img className="logo" src={logo} alt="Logo" style={{ padding: "0px 10px" }} />
+                        <img className="logo" src={logo1} alt="Logo" style={{ padding: "0px 10px" }} />
                     </span>
                     {/* <span className="footer-title">BNB Stake </span> */}
                     <a>
@@ -110,7 +110,7 @@ function Navbar() {
                 <div className="leftSide">
                     <div className="links" id={showLinks ? "hidden" : ""}>
                         <a href="#">
-                            1 BNB = $488.11
+                            1 SMS = $488.11
                         </a>
                         {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-warning btn-sm active" role="button" aria-pressed="true"
@@ -140,12 +140,12 @@ function Navbar() {
                             Telegram
 
                         </a>
-                        {/* &nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp; */}
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
                     </div>
                     <button onClick={() => setShowLinks(!showLinks)}>
                         <img src={menuIcon} />

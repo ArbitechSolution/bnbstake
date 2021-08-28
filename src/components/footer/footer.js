@@ -1,14 +1,17 @@
 import React, { useState, useEffect } from "react";
 import './footer.css';
 import Pdf from '../../asset/images/pdf.pdf';
-
+import logo1 from '../../asset/images/logo1.png';
 function Footer
     () {
     return (
         <div className="container-fluid">
-            <div className="container">
+           {/* <div className="container"> */}
                 <div className="footer">
                     <div className="row">
+                    <div className="col-sm">
+                        <img className="logo" src={logo1} alt="Logo" style={{ padding: "0px 10px" }} />
+                        </div>
                         <div className="col-sm">
                             <h6>Powered by</h6>
                             <a href="https://www.binance.org/en/smartChain"> Binance Smart Chain</a>
@@ -23,7 +26,7 @@ function Footer
                         </div>
                     </div>
                 </div>
-            </div>
+                {/* </div> */}
         </div >
     );
 }
