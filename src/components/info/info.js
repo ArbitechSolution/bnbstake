@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import {
     contractAddress,
+    abi,
+    tokenAddres,
+    tokenAbi
 } from "../../utils/constant";
 import './info.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -16,7 +19,23 @@ function Info() {
     let accountAd;
     const [account, setAccount] = useState("Connect");
     const [showLinks, setShowLinks] = useState(false);
+    const [dailyProfit, setdailyProfit] = useState(0);
+    const [totalReturn, setTotalReturn] = useState(0);
+    const [withdrawTime, setWithdrawTime] = useState(0);
+    const [enterAmount, setEnterAmount] = useState(0);
+    const [fourteenDaysReward, setfourteenDaysReward] = useState(0);
+    const [days, setdays] = useState(0);
 
+    const getData = async () => {
+        try {
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            // console.log("data", web3);
+            let accountDetails = await contract.methods.allocation(days).call();
+        } catch (error) {
+            alert("Error while checking locked account");
+        }
+    };
     function formatThousands(num) {
         var numbr = parseFloat(parseFloat(num).toFixed(6));
         // console.log("num", parseFloat(numbr));
