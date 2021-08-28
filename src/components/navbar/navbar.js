@@ -9,7 +9,7 @@ import { ToastContainer, toast } from 'react-toastify';
 
 // import logo from "../../asset/images/logo.png";
 import logo from "../../asset/images/logo.png";
-// import WalletConnectProvider from "@walletconnect/web3-provider";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 import menuIcon from "../../asset/images/menuIcon.png";
 function Header() {
 
