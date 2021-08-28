@@ -10,9 +10,11 @@ import Sponsor from './components/sponsors/sponsor';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
 
+import { ToastContainer, toast } from 'react-toastify';
 function App() {
   return (
     <div className="App">
+      <ToastContainer />
       <Navbar />
       <Info />
       <Header />

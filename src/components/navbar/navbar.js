@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Web3 from "web3";
 import {
     contractAddress,
-    
+
 } from "../../utils/constant";
 import './navbar.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -11,7 +11,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import logo from "../../asset/images/logo.png";
 
 import menuIcon from "../../asset/images/menuIcon.png";
-function Header() {
+function Navbar() {
 
     let accountAd;
     const [account, setAccount] = useState("Connect");
@@ -73,7 +73,7 @@ function Header() {
             return null;
         }
     };
-   
+
     // eslint-disable-next-line
     const isLockedAccount = async () => {
         try {
@@ -140,12 +140,6 @@ function Header() {
                             Telegram
 
                         </a>
-                        &nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;
                     </div>
                     <button onClick={() => setShowLinks(!showLinks)}>
                         <img src={menuIcon} />
@@ -156,4 +150,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default Navbar;
