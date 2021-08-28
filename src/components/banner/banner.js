@@ -128,7 +128,7 @@ function Banner() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-warning btn-block">
+                                <button type="button" className="btn btn-block btn-grad" id="ImageColor">
                                     Stake BNB
                                 </button>
                             </div>
@@ -171,7 +171,7 @@ function Banner() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-warning btn-block">
+                                <button type="button" className="btn btn-grad btn-block">
                                     Stake BNB
                                 </button>
                             </div>
@@ -214,7 +214,7 @@ function Banner() {
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-warning btn-block">
+                                <button type="button" className="btn btn-grad btn-block">
                                     Stake BNB
                                 </button>
                             </div>
