@@ -17,6 +17,7 @@ function Header() {
     const [withdrawTime, setWithdrawTime] = useState(0);
     const [enterAmount, setEnterAmount] = useState(0);
     const [fourteenDaysReward, setfourteenDaysReward] = useState(0);
+    const [days, setdays] = useState(0);
 
     function formatThousands(num) {
         var numbr = parseFloat(parseFloat(num).toFixed(6));
@@ -56,12 +57,12 @@ function Header() {
                     // console.log(accounts);
                 });
             }
+            getData();
         } catch (error) {
             console.log("Error while connecting metamask", error);
             // alert("Error while connecting metamask");
         }
     };
-
 
     const getAccounts = async () => {
         const web3 = window.web3;
@@ -84,6 +85,17 @@ function Header() {
             } else {
                 console.log("Metamask is locked");
             }
+        } catch (error) {
+            alert("Error while checking locked account");
+        }
+    };
+
+    const getData = async () => {
+        try {
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            // console.log("data", web3);
+            let accountDetails = await contract.methods.allocation(days).call();
         } catch (error) {
             alert("Error while checking locked account");
         }
