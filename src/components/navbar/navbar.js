@@ -140,6 +140,12 @@ function Navbar() {
                             Telegram
 
                         </a>
+                        {/* &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp; */}
                     </div>
                     <button onClick={() => setShowLinks(!showLinks)}>
                         <img src={menuIcon} />
