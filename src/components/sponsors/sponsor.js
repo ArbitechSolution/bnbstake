@@ -19,8 +19,13 @@ function Sponsor() {
         <div className="container-fluid">
             <div className="container">
                 <div className="row">
+                    <div className="col">
+                        <h1 className="sponsors">SPONSORS</h1>
+                    </div>
+                </div>
+                <div className="row">
                     <div className="col-sm">
-                        <img src={footer} alt="sposor" />
+                        <img className="sponsor-image" src={footer} alt="sposor" />
                     </div>
                     {/* <div className="col-sm">
                         <img src={logo2} alt="sposor" />

@@ -7,7 +7,7 @@
     width: 100%;
     height: auto;
     display: flex;
-    background-color: #222222;
+    background-color: #0E044D;
 }
 
 .Navbar .leftSide{
@@ -87,13 +87,11 @@ margin: 0px;
 
 
 @media (max-width: 1092px) {
-    
     .Navbar .leftSide button{
         display: flex;
     }
     .Navbar .leftSide .links {
         display: none;
-
     }
     .Navbar .leftSide #hidden{
         position: absolute;

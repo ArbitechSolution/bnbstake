@@ -22,17 +22,31 @@ function Myaccount() {
     const [totalReturn, setTotalReturn] = useState(0);
     const [withdrawTime, setWithdrawTime] = useState(0);
     const [enterAmount, setEnterAmount] = useState(0);
-    const [fourteenDaysReward, setfourteenDaysReward] = useState(0);
+    const [uplineearb, setuplineearn] = useState(0);
     const [days, setdays] = useState(0);
+    const [WithdrawAbleReward, setWithdrawAbleReward] = useState(0);
+    const [referralReward, SetReferralReward] = useState(0);
+    const [userstaked, setuserstaked] = useState(0);
+    const [numberodreferral, setnumberodreferral] = useState(0)
+
+    const [withdrawamount, setwithdrawamount] = useState(0);
 
     const getData = async () => {
         try {
             const web3 = window.web3;
             let contract = new web3.eth.Contract(abi, contractAddress);
             // console.log("data", web3);
-            let accountDetails = await contract.methods.allocation(days).call();
+            let totalupline = await contract.methods.Total_Upline_Earned().call();
+            setuplineearn(totalupline);
+
+            let uplinereward = await contract.methods.Users(accountAd).call();
+            SetReferralReward(uplinereward.upline_Reward);
+            setWithdrawAbleReward(uplinereward.WithdrawAbleReward);
+            setuserstaked(uplinereward.DepositeToken);
+            setnumberodreferral(uplinereward.referrals)
+
         } catch (error) {
-            alert("Error while checking locked account");
+            console.log("Error while checking locked account", error);
         }
     };
     function formatThousands(num) {
@@ -57,7 +71,7 @@ function Myaccount() {
             } else {
                 isConnected = false;
                 console.log("Metamask is not installed, please install it on your browser to connect.");
-                // alert("Metamask is not installed, please install it on your browser to connect.");
+                // toast("Metamask is not installed, please install it on your browser to connect.");
             }
             if (isConnected === true) {
                 let accounts = await getAccounts();
@@ -72,6 +86,7 @@ function Myaccount() {
                     // console.log(accounts);
                 });
             }
+            getData();
         } catch (error) {
             console.log("Error while connecting metamask", error);
             // alert("Error while connecting metamask");
@@ -88,6 +103,41 @@ function Myaccount() {
             return null;
         }
     };
+    const enterAmountCall = async (e) => {
+        try {
+            setwithdrawamount(e.target.value);
+        } catch (error) {
+            console.log("Error while checking locked account");
+        }
+    };
+    const WithdrawReward = async () => {
+        const web3 = window.web3;
+        try {
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            // console.log("withdrawamount", withdrawamount);
+            if (WithdrawAbleReward > 0 && withdrawamount >= 10) {
+                let uplinereward = await contract.methods.WithdrawReward(
+                    web3.utils.toWei(withdrawamount)
+                ).send({
+                    from: account
+                })
+                    .then(async (output) => {
+                        toast.success("Transaction Completed");
+                    }).catch((e) => {
+                        // console.log("response", e);
+                        toast.error(e.message);
+                    });
+            } else {
+                toast("You do not Have sufficient balance to withdraw");
+                // console.log("withdrawamount", "You do not Have sufficient balance to withdraw")
+            }
+        } catch (error) {
+            console.log("Error while fetching acounts: ", error);
+        }
+    };
+
+
     // eslint-disable-next-line
     const isLockedAccount = async () => {
         try {
@@ -95,12 +145,28 @@ function Myaccount() {
             if (accounts.length > 0) {
                 // console.log("Metamask is unlocked");
             } else {
-                console.log("Metamask is locked");
+                // console.log("Metamask is locked");
             }
         } catch (error) {
-            alert("Error while checking locked account");
+            console.log("Error while checking locked account");
         }
     };
+    function copyToClipboard(e) {
+        try {
+            let get = document.getElementById("textAreaRef").select();
+            document.execCommand('copy');
+            e.target.focus();
+            toast.success('copied!');
+        } catch (error) {
+            console.log("Error while fetching acounts: ", error);
+        }
+    };
+
+    useEffect(() => {
+        setInterval(() => {
+            loadWeb3();
+        }, 1000);
+    }, []);
 
     return (
         <div className="container">
@@ -108,11 +174,16 @@ function Myaccount() {
                 <div className="col-sm-4">
                     <div className="mystaked">
                         <div className="row">
-                            <span className="mystakedtext">Total Stacked SMS</span>
-                            <span className="mystakedvalue">0</span>
-                            <span className="mystakedtext">Available SMS for withdrawal</span>
-                            <span className="mystakedvalue">0.000</span>
-                            <button className="btn btn-primary">Withdraw</button>
+                            <span className="mystakedtext">Withdrawable Reward</span>
+                            <span className="mystakedvalue">{WithdrawAbleReward}</span>
+                            <span className="mystakedtext">User Total Deposit</span>
+                            <span className="mystakedvalue">{userstaked}</span>
+                            <input className="stakeinput" onChange={enterAmountCall} />
+                            <button className="btn btn-primary"
+                                onClick={WithdrawReward}>
+                                Withdraw
+                            </button>
+
                         </div>
                     </div>
                     <div className="row" style={{ color: "white" }}>
@@ -124,16 +195,22 @@ function Myaccount() {
                         <span className="refferaltext">Your Referral Link</span>
                         <div className="row">
                             <div className="col-sm-10">
-                                <input placeholder="Please connect to your wallet" />
+                                <input placeholder="Please connect to your wallet"
+                                    value={`${window.location.protocol}//${window.location.host
+                                        }/login?ref=${account}`}
+                                />
                             </div>
                             <div className="col-sm-2">
-                                <button className="copy">copy</button>
+                                <button className="copy"
+                                    id="textAreaRef"
+                                    onClick={copyToClipboard}
+                                >copy</button>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-4">
                                 <span className="refferaltext">Total Referral Earned</span>
-                                <span className="refferalvalue">0</span>
+                                <span className="refferalvalue">{referralReward}</span>
                             </div>
                             <div className="col-4">
                                 <span className="refferaltext">Total Referral Withdrawn</span>
@@ -141,7 +218,7 @@ function Myaccount() {
                             </div>
                             <div className="col-4">
                                 <span className="refferaltext">Invited Users by You</span>
-                                <span className="refferalvalue">0</span>
+                                <span className="refferalvalue">{numberodreferral}</span>
                             </div>
                         </div>
                         <div className="row" style={{

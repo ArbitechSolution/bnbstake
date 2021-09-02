@@ -4,7 +4,7 @@ import {
     contractAddress,
     abi,
     tokenAddres,
-    tokenAbi
+    tokenAbi, refDefaultAddress
 } from "../../utils/constant";
 import './bannerendplan.css';
 import { ToastContainer, toast } from 'react-toastify';
@@ -17,22 +17,241 @@ function BannerEndPlan() {
 
     let accountAd;
     const [account, setAccount] = useState("Connect");
-    const [showLinks, setShowLinks] = useState(false);
-    const [dailyProfit, setdailyProfit] = useState(0);
-    const [totalReturn, setTotalReturn] = useState(0);
-    const [withdrawTime, setWithdrawTime] = useState(0);
-    const [enterAmount, setEnterAmount] = useState(0);
-    const [fourteenDaysReward, setfourteenDaysReward] = useState(0);
-    const [days, setdays] = useState(0);
+    const [upline, setUpline] = useState(refDefaultAddress);
+
+    const [dailyProfit1, set1dailyProfit] = useState(60);
+    const [totalReturn1, set1TotalReturn] = useState(100);
+    const [withdrawn1, set1withdrawn] = useState(0);
+    const [withdrawnAble1, set1withdrawAble] = useState(0);
+    const [enterAmount1, set1EnterAmount] = useState(0);
+    const [fourteenDaysReward1, set1fourteenDaysReward] = useState(0);
+    const [days1, set1days] = useState(120);
+
+    const [dailyProfit2, set2dailyProfit] = useState(72);
+    const [totalReturn2, set2TotalReturn] = useState(100);
+    const [withdrawn2, set2withdrawn] = useState(0);
+    const [withdrawnAble2, set2withdrawAble] = useState(0);
+    const [enterAmount2, set2EnterAmount] = useState(0);
+    const [fourteenDaysReward2, set2fourteenDaysReward] = useState(0);
+    const [days2, set2days] = useState(240);
+
+    const [dailyProfit3, set3dailyProfit] = useState(96);
+    const [totalReturn3, set3TotalReturn] = useState(100);
+    const [withdrawn3, set3withdrawn] = useState(0);
+    const [withdrawnAble3, set3withdrawAble] = useState(0);
+    const [enterAmount3, set3EnterAmount] = useState(0);
+    const [fourteenDaysReward3, set3fourteenDaysReward] = useState(0);
+    const [days3, set3days] = useState(365);
 
     const getData = async () => {
         try {
             const web3 = window.web3;
             let contract = new web3.eth.Contract(abi, contractAddress);
             // console.log("data", web3);
-            let accountDetails = await contract.methods.allocation(days).call();
+            let users = await contract.methods.Users(accountAd).call();
+            // console.log("users", users);
+            // console.log("users", users.lockableDays);
+            if (users.lockableDays == days1) {
+                // console.log("users", days1);
+                let dailyprofit1 = await contract.methods.allocation(days1).call();
+                let daily = dailyprofit1 / 365;
+                let treturn = daily * days1;
+                set3TotalReturn(treturn);
+                set1withdrawAble(users.WithdrawAbleReward);
+                set1withdrawn(users.WithdrawReward);
+                set1dailyProfit(daily);
+
+            } else if (users.lockableDays == days2) {
+                // console.log("users", days2);
+                let dailyprofit2 = await contract.methods.allocation(days2).call();
+                let daily = dailyprofit2 / 365;
+                let treturn = daily * days2;
+                set3TotalReturn(treturn);
+                set2withdrawn(users.WithdrawReward);
+                set2withdrawAble(users.WithdrawAbleReward);
+                set2dailyProfit(daily);
+
+            } else if (users.lockableDays == days3) {
+                // console.log("users", days3);
+                let dailyprofit3 = await contract.methods.allocation(days3).call();
+                let daily = dailyprofit3 / 365;
+                let treturn = daily * days3;
+                set3TotalReturn(treturn);
+                set3withdrawn(users.WithdrawReward);
+                set3withdrawAble(users.WithdrawAbleReward);
+                set3dailyProfit(daily);
+            }
+            // set3withdrawAble
+
         } catch (error) {
-            alert("Error while checking locked account");
+            console.log("Error while checking locked account");
+        }
+    };
+
+    const Deposite = async (e) => {
+        try {
+            console.log("deposite", e.target.name)
+            const name = e.target.name;
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            let tokenContract = new web3.eth.Contract(tokenAbi, tokenAddres);
+            let checkuser = await contract.methods._chakUpline(upline).call();
+            if (checkuser) {
+                // console.log("enterAmount", enterAmount1, enterAmount2, enterAmount3, e.target.name)
+                if (name === 'planone') {
+                    if (enterAmount1 >= 100) {
+                        await tokenContract.methods.approve(contractAddress, web3.utils.toWei(enterAmount1))
+                            .send({
+                                from: account
+                            })
+                            .then(async (output) => {
+                                let dailyprofit1 = await contract.methods.Deposite(enterAmount1, upline, days1)
+                                    .send({
+                                        from: account
+                                    })
+                                    .then(async (output) => {
+                                        toast.success("Transaction Completed");
+                                    }).catch((e) => {
+                                        console.log("response", e);
+                                        toast.error(e.message);
+                                    });
+                            }).catch((e) => {
+                                console.log("response", e);
+                                toast.error(e.message);
+                            });
+                    } else {
+                        toast("Minimum amount is 100 SMS")
+                    }
+                } else if (name === 'plantwo') {
+                    if (enterAmount2 >= 100) {
+                        await tokenContract.methods.approve(contractAddress, web3.utils.toWei(enterAmount2))
+                            .send({
+                                from: account
+                            })
+                            .then(async (output) => {
+                                let dailyprofit2 = await contract.methods.Deposite(enterAmount2, upline, days1)
+                                    .send({
+                                        from: account
+                                    })
+                                    .then(async (output) => {
+                                        toast.success("Transaction Completed");
+                                    }).catch((e) => {
+                                        console.log("response", e);
+                                        toast.error(e.message);
+                                    });
+                            }).catch((e) => {
+                                console.log("response", e);
+                                toast.error(e.message);
+                            });
+
+                    } else {
+                        toast("Minimum amount is 100 SMS")
+                    }
+                }
+                else if (name === 'planthree') {
+                    if (enterAmount3 >= 100) {
+                        await tokenContract.methods.approve(contractAddress, enterAmount3)
+                            .send({
+                                from: account
+                            })
+                            .then(async (output) => {
+                                let dailyprofit3 = await contract.methods.Deposite(enterAmount3, upline, days1)
+                                    .send({
+                                        from: account
+                                    })
+                                    .then(async (output) => {
+                                        toast.success("Transaction Completed");
+                                    }).catch((e) => {
+                                        console.log("response", e);
+                                        toast.error(e.message);
+                                    });
+                            }).catch((e) => {
+                                console.log("response", e);
+                                toast.error(e.message);
+                            });
+                    } else {
+                        toast("Minimum amount is 100 SMS")
+                    }
+                }
+            }
+            else {
+                toast("Refferal Address is not Correct");
+                console.log("Refferal Address is not Correct");
+            }
+        } catch (error) {
+            console.log("response", error);
+            // alert("Error while checking locked account");
+        }
+    };
+    const unstake = async () => {
+        try {
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            // console.log("withrawableDepositeAmount", accountAd, account);
+            let users = await contract.methods.Users(account).call();
+
+            // console.log("withrawableDepositeAmount", users);
+
+            if (users.withrawableDepositeAmount > 0) {
+                if (users.WithdrawAbleReward <= 0) {
+                    let dailyprofit1 = await contract.methods.Withdraw_Staking_Amount()
+                        .send({
+                            from: account
+                        })
+                        .then(async (output) => {
+                            toast.success("Transaction Completed");
+                        }).catch((e) => {
+                            console.log("response", e);
+                            toast.error(e.message);
+                        });
+                } else {
+                    toast("withdraw reward first");
+                }
+            } else {
+                toast("No Claim available");
+            }
+        } catch (error) {
+            console.log("response", error);
+            // alert("Error while checking locked account");
+        }
+    };
+    const checkReward = async (e) => {
+        try {
+            console.log("deposite", e.target.name)
+            const name = e.target.name;
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+            // if (name === 'planone') {
+            let rewards = await contract.methods.Rewards()
+                .send({
+                    from: account
+                })
+                .then(async (output) => {
+                    toast.success("Transaction Completed");
+                }).catch((e) => {
+                    console.log("response", e);
+                    toast.error(e.message);
+                });
+            // } 
+        } catch (error) {
+            console.log("response", error);
+            // alert("Error while checking locked account");
+        }
+    };
+
+    const enter1AmountCall = async (e) => {
+        try {
+            const name = e.target.name;
+            console.log("name", name);
+            if (name === 'first_input') {
+                set1EnterAmount(e.target.value);
+            } else if (name === 'second_input') {
+                set2EnterAmount(e.target.value);
+            } else if (name === 'third_input') {
+                set3EnterAmount(e.target.value);
+            }
+        } catch (error) {
+            console.log("Error while checking locked account");
         }
     };
     function formatThousands(num) {
@@ -73,6 +292,7 @@ function BannerEndPlan() {
                     // console.log(accounts);
                 });
             }
+            getData();
         } catch (error) {
             console.log("Error while connecting metamask", error);
             // alert("Error while connecting metamask");
@@ -102,9 +322,15 @@ function BannerEndPlan() {
                 console.log("Metamask is locked");
             }
         } catch (error) {
-            alert("Error while checking locked account");
+            // alert("Error while checking locked account");
         }
     };
+
+    useEffect(() => {
+        setInterval(() => {
+            loadWeb3();
+        }, 1500);
+    }, []);
 
     return (
         <div className="container-fluid">
@@ -113,45 +339,64 @@ function BannerEndPlan() {
                     <div className="col-sm-4">
                         <div className="bannerendcard">
                             <div className="col-md-12" id="plan1">
-                                <span>Plan 4</span>
+                                <span>Plan D</span>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Daily Profit</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Est. APY</span>
+                                    <span className="bannerendvalue">{dailyProfit1}%</span>
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Total Return</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Min. Locked Amount</span>
+                                    <span className="bannerendvalue">{totalReturn1}</span>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Withdraw time</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Withdrawn</span>
+                                    <span className="bannerendvalue">{withdrawn1}</span>
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerendprofit">Days</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendvalue">{days1}</span>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
                                     <span className="bannerendprofit">Enter Amount</span>
                                     {/* <span className="bannerendvalue">0%</span> */}
-                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
+                                    <input
+                                        name="first_input"
+                                        className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"
+                                        onChange={enter1AmountCall}
+                                    />
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">In 14 days you will get</span>
-                                    <span className="bannerendvalue">0</span>
+                                    <span className="bannerendprofit">Withdrawable</span>
+                                    <span className="bannerendvalue">{withdrawnAble1}</span>
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-grad btn-block">
-                                    <b>Stake SMS</b>
-                                </button>
-                                <button type="button" className="btn btn-gradd btn-block">
-                                    <b>claim reward</b>
+                                <div className="row">
+                                    <div className="col-sm">
+                                        <button type="button" className="btn btn-grad" id="ImageColor"
+                                            name="planone"
+                                            onClick={Deposite}>
+                                            Stake SMS
+                                        </button>
+                                    </div>
+                                    <div className="col-sm">
+                                        <button type="button" className="btn btn-grad" id="ImageColor"
+                                            // name="planone"
+                                            onClick={unstake}>
+                                            Claim SMS
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" className="btn btn-gradd btn-block"
+                                    // name="planone"
+                                    onClick={checkReward}>
+                                    check reward
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
                             </div>
@@ -160,45 +405,64 @@ function BannerEndPlan() {
                     <div className="col-sm-4">
                         <div className="bannerendcard">
                             <div className="col-md-12" id="plan1">
-                                <span>Plan 5</span>
+                                <span>Plan E</span>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Daily Profit</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Est. APY</span>
+                                    <span className="bannerendvalue">{dailyProfit2}%</span>
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Total Return</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Min. Locked Amount</span>
+                                    <span className="bannerendvalue">{totalReturn2}</span>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Withdraw time</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Withdrawn</span>
+                                    <span className="bannerendvalue">{withdrawn2}</span>
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerendprofit">Days</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendvalue">{days2}</span>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
                                     <span className="bannerendprofit">Enter Amount</span>
                                     {/* <span className="bannerendvalue">0%</span> */}
-                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
+                                    <input
+                                        name="second_input"
+                                        className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"
+                                        onChange={enter1AmountCall}
+                                    />
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">In 14 days you will get</span>
-                                    <span className="bannerendvalue">0</span>
+                                    <span className="bannerendprofit">Withdrawable</span>
+                                    <span className="bannerendvalue">{withdrawnAble2}</span>
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-grad btn-block">
-                                    <b>Stake SMS</b>
-                                </button>
-                                <button type="button" className="btn btn-gradd btn-block">
-                                    <b>claim reward</b>
+                                <div className="row">
+                                    <div className="col-sm">
+                                        <button type="button" className="btn btn-grad" id="ImageColor"
+                                            name="plantwo"
+                                            onClick={Deposite}>
+                                            Stake SMS
+                                        </button>
+                                    </div>
+                                    <div className="col-sm">
+                                        <button type="button" className="btn btn-grad" id="ImageColor"
+                                            // name="plantwo"
+                                            onClick={unstake}>
+                                            Claim SMS
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" className="btn btn-gradd btn-block"
+                                    // name="plantwo"
+                                    onClick={checkReward}>
+                                    check reward
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
                             </div>
@@ -207,45 +471,63 @@ function BannerEndPlan() {
                     <div className="col-sm-4">
                         <div className="bannerendcard">
                             <div className="col-md-12" id="plan1">
-                                <span>Plan 6</span>
+                                <span>Plan F</span>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Daily Profit</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Est. APY</span>
+                                    <span className="bannerendvalue">{dailyProfit3}%</span>
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Total Return</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Min. Locked Amount</span>
+                                    <span className="bannerendvalue">{totalReturn3}</span>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Withdraw time</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendprofit">Withdrawn</span>
+                                    <span className="bannerendvalue">{withdrawn3}</span>
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerendprofit">Days</span>
-                                    <span className="bannerendvalue">0%</span>
+                                    <span className="bannerendvalue">{days3}</span>
                                 </div>
                             </div>
                             <div className="row">
                                 <div className="col-6">
                                     <span className="bannerendprofit">Enter Amount</span>
                                     {/* <span className="bannerendvalue">0%</span> */}
-                                    <input className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"  />
+                                    <input
+                                        name="third_input" className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"
+                                        onChange={enter1AmountCall}
+                                    />
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">In 14 days you will get</span>
-                                    <span className="bannerendvalue">0</span>
+                                    <span className="bannerendprofit">Withdrawable</span>
+                                    <span className="bannerendvalue">{withdrawnAble3}</span>
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
-                                <button type="button" className="btn btn-grad btn-block">
-                                    <b>Stake SMS</b>
-                                </button>
-                                <button type="button" className="btn btn-gradd btn-block">
-                                    <b>claim reward</b>
+                                <div className="row">
+                                    <div className="col-sm">
+                                        <button type="button" className="btn btn-grad" id="ImageColor"
+                                            name="planthree"
+                                            onClick={Deposite}>
+                                            Stake SMS
+                                        </button>
+                                    </div>
+                                    <div className="col-sm">
+                                        <button type="button" className="btn btn-grad" id="ImageColor"
+                                            // name="planthree"
+                                            onClick={unstake}>
+                                            Claim SMS
+                                        </button>
+                                    </div>
+                                </div>
+                                <button type="button" className="btn btn-gradd btn-block"
+                                    // name="planthree"
+                                    onClick={checkReward}>
+                                    check reward
                                 </button>
                                 <span className="bannerendnote">* plan use capitalization of interest</span>
                             </div>
@@ -254,7 +536,7 @@ function BannerEndPlan() {
                 </div>
                 <div className="row">
                     <span className="bannerendnwarnings">
-                        1. Important: Plans return are float and daily profit for a new deposit will increase by 0.5% daily
+                        1. Important: Plans return are float and Daily Profit for a new deposit will increase by 0.5% daily
                     </span>
                     <span className="bannerendnwarnings">
                         2. Minimum deposit amount is 0.05 SMS and you can have multiple deposits

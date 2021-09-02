@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 import './footer.css';
 import Pdf from '../../asset/images/pdf.pdf';
-import logo1 from '../../asset/images/logo1.png';
+import logo1 from '../../asset/images/Golden.png';
 function Footer
     () {
     return (
         <div className="container-fluid">
-           {/* <div className="container"> */}
+            <div className="container">
                 <div className="footer">
                     <div className="row">
-                    <div className="col-sm">
-                        <img className="logo" src={logo1} alt="Logo" style={{ padding: "0px 10px" }} />
+                        <div className="col-sm">
+                            <img className="logo" src={logo1} alt="Logo" style={{ padding: "0px 10px" }} />
                         </div>
                         <div className="col-sm">
                             <h6>Powered by</h6>
@@ -22,11 +22,11 @@ function Footer
                         </div>
                         <div className="col-sm">
                             <h6> © 2021 All rights reserved. </h6>
-                            <a href="#"> https://bnbstake.pro </a>
+                            <a href="#"> https://smsstake.pro </a>
                         </div>
                     </div>
                 </div>
-                {/* </div> */}
+            </div>
         </div >
     );
 }

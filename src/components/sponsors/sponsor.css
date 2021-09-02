@@ -1,18 +1,20 @@
-img{
+.sponsors{
+    color: white;
+    /* background-color: rgb(148, 147, 147); */
+    padding: 0;
+    margin: 0;
+}
+.sponsor-image{
     width: 985px;
     height: auto;
-    /* background-color: rgba(196, 191, 191, 0.3); */
-    border-radius: 20px;
-    padding: 20px;
-    margin: 10px 0px;
+    padding: 5px;
+    margin: 20px 0px 60px;
 }
 @media (max-width: 600px ){
-    img{
+    .sponsor-image{
         width: 470px;
         height: auto;
-        /* background-color: rgba(196, 191, 191, 0.3); */
-        border-radius: 20px;
-        padding: 20px;
-        margin: 40px 0px;
+        padding: 5px;
+        margin: 20px 0px 60px;
     }
-}
+} 

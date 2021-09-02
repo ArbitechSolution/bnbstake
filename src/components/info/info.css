@@ -10,7 +10,7 @@
     flex-direction: column;
     align-items: flex-start;
     padding: 15px;
-    background-image: url("../../asset/images/info.png");
+    background-image: url("../../asset/images/cardd.jpg");
     margin: 0;
     border-radius: .3rem;
 }
@@ -37,6 +37,16 @@
     background-color: thistle;
     color: black;
     margin: 5px;
+}
+.stakeinput{
+    display: flex;
+    justify-content: center;
+    
+    color: #fff;
+    background-color: rgb(12, 10, 10);
+    border-color: #444;
+    padding: .5rem ;
+    border-radius: .3rem;
 }
 @media (max-width: 1092px) {
 }

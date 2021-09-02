@@ -11,19 +11,19 @@
     align-items: flex-start;
     justify-content: flex-start;
     padding: 15px;
-    background-image: url("../../asset/images/bg.png");
+    background-image: url("../../asset/images/Card.png");
     margin: 20px 0px;
     border-radius: .3rem;
 }
 .mystaked .mystakedtext{
     display: flex;
     justify-content: flex-start;
-    color: black;
+    color: white;
 }
 .mystaked .mystakedvalue{
     display: flex;
     justify-content: flex-start;
-    color: black;
+    color: white;
     font-size: 20pt;
     font-weight: 600;
  }

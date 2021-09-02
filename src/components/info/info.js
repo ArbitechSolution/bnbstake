@@ -25,15 +25,24 @@ function Info() {
     const [enterAmount, setEnterAmount] = useState(0);
     const [fourteenDaysReward, setfourteenDaysReward] = useState(0);
     const [days, setdays] = useState(0);
+    const [contractBalance, setcontractBalance] = useState(0);
+    const [totalusers, setTotalUsers] = useState(0);
 
     const getData = async () => {
         try {
             const web3 = window.web3;
+            let tokenContract = new web3.eth.Contract(tokenAbi, tokenAddres);
             let contract = new web3.eth.Contract(abi, contractAddress);
             // console.log("data", web3);
-            let accountDetails = await contract.methods.allocation(days).call();
+            let accountDetails = await tokenContract.methods.balanceOf(contractAddress).call();
+            setcontractBalance(accountDetails);
+            // total_users
+            let total_users = await contract.methods.total_users().call();
+            console.log("total_users", total_users);
+            setTotalUsers(total_users);
         } catch (error) {
-            alert("Error while checking locked account");
+            console.log("data", error);
+            // alert("Error while checking locked account");
         }
     };
     function formatThousands(num) {
@@ -74,6 +83,7 @@ function Info() {
                     // console.log(accounts);
                 });
             }
+            getData();
         } catch (error) {
             console.log("Error while connecting metamask", error);
             // alert("Error while connecting metamask");
@@ -103,9 +113,15 @@ function Info() {
                 console.log("Metamask is locked");
             }
         } catch (error) {
-            alert("Error while checking locked account");
+            // alert("Error while checking locked account");
         }
     };
+
+    useEffect(() => {
+        setInterval(() => {
+            loadWeb3();
+        }, 1000);
+    }, []);
 
     return (
         <div className="container-fluid">
@@ -120,12 +136,18 @@ function Info() {
                         </div>
                     </div>
                     <div className="col-sm-4">
-                        <span className="infostaked">Total SMS Staked
-                            <span className='badge' bg="light" text="dark">contract</span>
+                        <span className="infostaked">Total Users
+                            <a
+                                href={`https://testnet.bscscan.com/${contractAddress}`}
+
+                                target="_blank"
+                                className='badge' bg="light" text="dark">
+                                contract
+                            </a>
                         </span>
-                        <span className="infostakedvalue">0</span>
+                        <span className="infostakedvalue">{totalusers}</span>
                         <span className="infostaked">Total Contract Balance</span>
-                        <span className="infostakedvalue">0</span>
+                        <span className="infostakedvalue">{contractBalance}</span>
                     </div>
                 </div>
             </div>

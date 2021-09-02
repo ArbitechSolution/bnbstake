@@ -9,6 +9,7 @@ import Myaccount from './components/myaccount/myaccount';
 import Sponsor from './components/sponsors/sponsor';
 import Footer from './components/footer/footer';
 import Header from './components/header/header';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { ToastContainer, toast } from 'react-toastify';
 function App() {

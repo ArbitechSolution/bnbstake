@@ -8,7 +8,7 @@ import './navbar.css';
 import { ToastContainer, toast } from 'react-toastify';
 
 // import logo from "../../asset/images/logo.png";
-import logo1 from "../../asset/images/logo1.png";
+import logo1 from "../../asset/images/Golden.png";
 
 import menuIcon from "../../asset/images/menuIcon.png";
 function Navbar() {
@@ -84,10 +84,14 @@ function Navbar() {
                 console.log("Metamask is locked");
             }
         } catch (error) {
-            alert("Error while checking locked account");
+            console.log("Error while checking locked account");
         }
     };
-
+    useEffect(() => {
+        setInterval(() => {
+            loadWeb3();
+        }, 1000);
+    }, []);
     return (
         <div className="container-fluid">
             <div className="Navbar" style={{ position: "relative", zIndex: "1" }}>
@@ -110,32 +114,32 @@ function Navbar() {
                 <div className="leftSide">
                     <div className="links" id={showLinks ? "hidden" : ""}>
                         <a href="#">
-                            1 SMS = $488.11
+                            1 SMS = $0.23
                         </a>
                         {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-warning btn-sm active" role="button" aria-pressed="true"
-                            onClick={loadWeb3}
+                        // onClick={loadWeb3}
                         >
                             PDF Guide
 
                         </a>
                         {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-info btn-sm active" role="button" aria-pressed="true"
-                            onClick={loadWeb3}
+                        // onClick={loadWeb3}
                         >
                             Help
 
                         </a>
                         {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-success btn-sm active" role="button" aria-pressed="true"
-                            onClick={loadWeb3}
+                        // onClick={loadWeb3}
                         >
-                            Audit
+                            SMSPAD
 
                         </a>
                         {/* &nbsp;&nbsp;&nbsp; */}
                         <a href="#" class="btn btn-primary btn-sm active" role="button" aria-pressed="true"
-                            onClick={loadWeb3}
+                        // onClick={loadWeb3}
                         >
                             Telegram
 
