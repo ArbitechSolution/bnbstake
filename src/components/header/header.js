@@ -143,7 +143,7 @@ function Header() {
                                                 margin: "10px",
                                                 padding: "0.8rem 0rem",
                                             }}>
-                                            Stake BNB
+                                            Stake SMS
                                         </button>
                                     </div>
                                 </div>

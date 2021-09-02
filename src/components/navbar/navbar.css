@@ -11,7 +11,7 @@
 }
 
 .Navbar .leftSide{
-flex: 70%;
+flex: 60%;
 display: flex;
 justify-content: flex-end;
 align-items: center;
@@ -59,7 +59,7 @@ margin: 0px;
 }
 
 .Navbar .rightSide{
-    flex: 30%;
+    flex: 40%;
     display: flex;
     align-items: center;
     justify-content: left;
@@ -67,8 +67,8 @@ margin: 0px;
 }
 
 .Navbar .rightSide img{
-    margin: 5px 0px 0px;
-    height: 50px;
+    margin: 0px 0px 0px;
+    height: 90px;
     width: auto;
 } 
 .Navbar .rightSide a{
@@ -83,6 +83,8 @@ margin: 0px;
     
     color: rgb(224, 193, 17);
 } */
+
+
 
 @media (max-width: 1092px) {
     

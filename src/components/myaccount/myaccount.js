@@ -108,9 +108,9 @@ function Myaccount() {
                 <div className="col-sm-4">
                     <div className="mystaked">
                         <div className="row">
-                            <span className="mystakedtext">Total Stacked BNB</span>
+                            <span className="mystakedtext">Total Stacked SMS</span>
                             <span className="mystakedvalue">0</span>
-                            <span className="mystakedtext">Available BNB for withdrawal</span>
+                            <span className="mystakedtext">Available SMS for withdrawal</span>
                             <span className="mystakedvalue">0.000</span>
                             <button className="btn btn-primary">Withdraw</button>
                         </div>

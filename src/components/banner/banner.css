@@ -24,7 +24,7 @@
     color: #fff;
     background-color: #444;
     border-color: #444;
-    padding: .5rem 0rem;
+    padding: .5rem ;
     border-radius: .3rem;
 }
 .bannercard button{
@@ -80,7 +80,7 @@
        text-transform: uppercase;
        transition: 0.5s;
        background-size: 200% auto;
-       border-radius: 10px;
+       /* border-radius: 10px; */
        display: block;
        border-radius: 35px;
      }
@@ -92,6 +92,24 @@
        text-decoration: none;
      }
     
+     .btn-gradd {background-image: linear-gradient(to right, #003973 0%, #E5E5BE  51%, #003973  100%)}
+     .btn-gradd {
+        margin: 10px;
+        padding: 15px 45px;
+        text-align: center;
+        text-transform: uppercase;
+        transition: 0.5s;
+        background-size: 200% auto;
+        border-radius: 35px;
+        display: block;
+      }
+
+      .btn-gradd:hover {
+        background-position: right center; /* change the direction of the change here */
+        color: #fff;
+        text-decoration: none;
+      }
+     
     
 @media (max-width: 1092px) {
     
