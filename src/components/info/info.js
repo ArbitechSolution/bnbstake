@@ -35,7 +35,7 @@ function Info() {
             let contract = new web3.eth.Contract(abi, contractAddress);
             // console.log("data", web3);
             let accountDetails = await tokenContract.methods.balanceOf(contractAddress).call();
-            setcontractBalance(accountDetails);
+            setcontractBalance(web3.utils.fromWei(accountDetails));
             // total_users
             let total_users = await contract.methods.total_users().call();
             console.log("total_users", total_users);
@@ -139,7 +139,6 @@ function Info() {
                         <span className="infostaked">Total Users
                             <a
                                 href={`https://testnet.bscscan.com/${contractAddress}`}
-
                                 target="_blank"
                                 className='badge' bg="light" text="dark">
                                 contract

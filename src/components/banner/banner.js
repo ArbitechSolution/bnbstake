@@ -59,7 +59,7 @@ function Banner() {
                 let treturn = daily * days1;
                 set1TotalReturn(treturn);
                 // set1withdrawAble(users.WithdrawAbleReward);
-                set1withdrawAble(users.totalreward);
+                // set1withdrawAble(users.totalreward);
                 set1withdrawn(users.WithdrawReward);
                 set1dailyProfit(daily);
 
@@ -70,7 +70,7 @@ function Banner() {
                 let treturn = daily * days2;
                 set2TotalReturn(treturn);
                 set2withdrawn(users.WithdrawReward);
-                set2withdrawAble(users.totalreward);
+                // set2withdrawAble(users.totalreward);
                 set2dailyProfit(daily);
 
             } else if (users.lockableDays == days3) {
@@ -80,7 +80,7 @@ function Banner() {
                 let treturn = daily * days3;
                 set3TotalReturn(treturn);
                 set3withdrawn(users.WithdrawReward);
-                set3withdrawAble(users.totalreward);
+                // set3withdrawAble(users.totalreward);
                 set3dailyProfit(daily);
             }
             // set3withdrawAble
@@ -108,7 +108,7 @@ function Banner() {
                             })
                             .then(async (output) => {
                                 // toast.success("Transaction Completed");
-                                let dailyprofit1 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount1), upline, days1)
+                                let dailyprofit1 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount1), days1, upline)
                                     .send({
                                         from: account
                                     })
@@ -133,7 +133,7 @@ function Banner() {
                                 from: account
                             })
                             .then(async (output) => {
-                                let dailyprofit2 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount2), upline, days2)
+                                let dailyprofit2 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount2), days2, upline)
                                     .send({
                                         from: account
                                     })
@@ -158,7 +158,7 @@ function Banner() {
                                 from: account
                             })
                             .then(async (output) => {
-                                let dailyprofit3 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount3), upline, days3)
+                                let dailyprofit3 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount3), days3, upline)
                                     .send({
                                         from: account
                                     })
@@ -170,7 +170,7 @@ function Banner() {
                                     });
                             }).catch((e) => {
                                 console.log("response", e);
-                                toast.error(e.message);
+                                // toast.error(e.message);
                             });
                     } else {
                         toast("Minimum amount is 100 SMS")
@@ -248,21 +248,30 @@ function Banner() {
     const enter1AmountCall = async (e) => {
         try {
             const name = e.target.name;
-            console.log("name", name);
+            // console.log("name", name);
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+
             if (name === 'first_input') {
                 set1EnterAmount(e.target.value);
+                let check_reward = await contract.methods.check_reward(days1, web3.utils.toWei(e.target.value)).call();
+                set1withdrawAble(formatThousands(web3.utils.fromWei(check_reward)));
             } else if (name === 'second_input') {
                 set2EnterAmount(e.target.value);
+                let check_reward = await contract.methods.check_reward(days2, web3.utils.toWei(e.target.value)).call();
+                set2withdrawAble(formatThousands(web3.utils.fromWei(check_reward)));
             } else if (name === 'third_input') {
                 set3EnterAmount(e.target.value);
+                let check_reward = await contract.methods.check_reward(days3, web3.utils.toWei(e.target.value)).call();
+                set3withdrawAble(formatThousands(web3.utils.fromWei(check_reward)));
             }
         } catch (error) {
-            console.log("Error while checking locked account");
+            console.log("Error while checking locked account", error);
         }
     };
 
     function formatThousands(num) {
-        var numbr = parseFloat(parseFloat(num).toFixed(6));
+        var numbr = parseFloat(parseFloat(num).toFixed(2));
         // console.log("num", parseFloat(numbr));
         var values = numbr.toString().split(".");
         return (
@@ -372,14 +381,15 @@ function Banner() {
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
 
-                                    <input className="stakeinput"
+                                    <input className="stakeinput form-control px-1"
                                         placeholder="0"
                                         name="first_input"
+                                        type="number"
                                         onChange={enter1AmountCall} />
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">Total Reward</span>
-                                    <span className="bannervalue">{withdrawnAble1}</span>
+                                    <span className="bannervalue1 py-2">{withdrawnAble1}</span>
                                 </div>
                             </div>
                             {/* <div class="d-grid gap-2"> */}
@@ -438,16 +448,17 @@ function Banner() {
                                     <span className="bannerprofit">Enter Amount</span>
                                     {/* <span className="bannervalue">0%</span> */}
 
-                                    <input className="stakeinput"
+                                    <input className="stakeinput form-control px-1"
                                         placeholder="0"
                                         name="second_input"
+                                        type="number"
                                         onChange={enter1AmountCall}
                                     />
 
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">Total Reward</span>
-                                    <span className="bannervalue">{withdrawnAble2}</span>
+                                    <span className="bannervalue1 py-2">{withdrawnAble2}</span>
                                 </div>
                             </div>
                             <div className="row">
@@ -506,16 +517,17 @@ function Banner() {
                                 <div className="col-6">
                                     <span className="bannerprofit">Enter Amount</span>
 
-                                    <input className="stakeinput"
+                                    <input className="stakeinput form-control px-1 "
                                         placeholder="0"
                                         name="third_input"
+                                        type="number"
                                         onChange={enter1AmountCall}
                                     />
 
                                 </div>
                                 <div className="col-6">
                                     <span className="bannerprofit">Total Reward</span>
-                                    <span className="bannervalue">{withdrawnAble3}</span>
+                                    <span className="bannervalue1 py-2">{withdrawnAble3}</span>
                                 </div>
                             </div>
                             <div className="row">

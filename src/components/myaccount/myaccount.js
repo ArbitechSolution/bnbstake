@@ -42,7 +42,7 @@ function Myaccount() {
             let uplinereward = await contract.methods.Users(accountAd).call();
             SetReferralReward(uplinereward.upline_Reward);
             setWithdrawAbleReward(uplinereward.WithdrawAbleReward);
-            setuserstaked(uplinereward.DepositeToken);
+            setuserstaked(web3.utils.fromWei(uplinereward.DepositeToken));
             setnumberodreferral(uplinereward.referrals)
 
         } catch (error) {
@@ -116,20 +116,28 @@ function Myaccount() {
             const web3 = window.web3;
             let contract = new web3.eth.Contract(abi, contractAddress);
             // console.log("withdrawamount", withdrawamount);
-            if (WithdrawAbleReward > 0 && withdrawamount >= 10) {
-                let uplinereward = await contract.methods.WithdrawReward(
-                    web3.utils.toWei(withdrawamount)
-                ).send({
-                    from: account
-                })
-                    .then(async (output) => {
-                        toast.success("Transaction Completed");
-                    }).catch((e) => {
-                        // console.log("response", e);
-                        toast.error(e.message);
-                    });
+            let checkuser = await contract.methods.Users(account).call();
+            let time_to_next_withraw = checkuser.Time_to_next_withraw;
+            let today = new Date().getTime();
+            if (today >= time_to_next_withraw) {
+                if (WithdrawAbleReward > 0 && withdrawamount >= 10) {
+                    let uplinereward = await contract.methods.WithdrawReward(
+                        web3.utils.toWei(withdrawamount)
+                    ).send({
+                        from: account
+                    })
+                        .then(async (output) => {
+                            toast.success("Transaction Completed");
+                        }).catch((e) => {
+                            // console.log("response", e);
+                            toast.error(e.message);
+                        });
+                } else {
+                    toast("You do not Have sufficient balance to withdraw");
+                    // console.log("withdrawamount", "You do not Have sufficient balance to withdraw")
+                }
             } else {
-                toast("You do not Have sufficient balance to withdraw");
+                toast("withdraw will be available after 24 hours");
                 // console.log("withdrawamount", "You do not Have sufficient balance to withdraw")
             }
         } catch (error) {
@@ -183,7 +191,6 @@ function Myaccount() {
                                 onClick={WithdrawReward}>
                                 Withdraw
                             </button>
-
                         </div>
                     </div>
                     <div className="row" style={{ color: "white" }}>
@@ -242,3 +249,8 @@ function Myaccount() {
 }
 
 export default Myaccount;
+
+
+// solana key phrase
+// remove capable record together 
+// economy donkey raise toddler half diet music first

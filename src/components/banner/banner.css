@@ -24,7 +24,7 @@
     color: #fff;
     background-color: #444;
     border-color: #444;
-    padding: .5rem ;
+    padding: .2rem 0rem;
     border-radius: .3rem;
 }
 .bannercard button{
@@ -45,6 +45,14 @@
     display: flex;
     color: rgb(62,191,247);
     font-size: 20pt;
+    font-weight: 600;
+    padding: 0 0 3px;
+    margin: 0;
+}
+.bannervalue1{
+    display: flex;
+    color: rgb(62,191,247);
+    font-size: 13pt;
     font-weight: 600;
     padding: 0 0 3px;
     margin: 0;

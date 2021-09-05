@@ -24,8 +24,6 @@ function App() {
       <Myaccount />
       <Sponsor />
       <Footer />
-
-
     </div>
   );
 }

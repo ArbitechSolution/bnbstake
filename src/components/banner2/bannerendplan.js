@@ -57,7 +57,7 @@ function BannerEndPlan() {
                 let daily = dailyprofit1 / 365;
                 let treturn = daily * days1;
                 set3TotalReturn(treturn);
-                set1withdrawAble(users.WithdrawAbleReward);
+                // set1withdrawAble(users.WithdrawAbleReward);
                 set1withdrawn(users.WithdrawReward);
                 set1dailyProfit(daily);
 
@@ -68,7 +68,7 @@ function BannerEndPlan() {
                 let treturn = daily * days2;
                 set3TotalReturn(treturn);
                 set2withdrawn(users.WithdrawReward);
-                set2withdrawAble(users.WithdrawAbleReward);
+                // set2withdrawAble(users.WithdrawAbleReward);
                 set2dailyProfit(daily);
 
             } else if (users.lockableDays == days3) {
@@ -78,13 +78,13 @@ function BannerEndPlan() {
                 let treturn = daily * days3;
                 set3TotalReturn(treturn);
                 set3withdrawn(users.WithdrawReward);
-                set3withdrawAble(users.WithdrawAbleReward);
+                // set3withdrawAble(users.WithdrawAbleReward);
                 set3dailyProfit(daily);
             }
             // set3withdrawAble
 
         } catch (error) {
-            console.log("Error while checking locked account");
+            console.log("Error while checking locked account", error);
         }
     };
 
@@ -105,7 +105,7 @@ function BannerEndPlan() {
                                 from: account
                             })
                             .then(async (output) => {
-                                let dailyprofit1 = await contract.methods.Deposite(enterAmount1, upline, days1)
+                                let dailyprofit1 = await contract.methods.Deposite(web3.utils.toWei(enterAmount1), days1, upline)
                                     .send({
                                         from: account
                                     })
@@ -124,12 +124,12 @@ function BannerEndPlan() {
                     }
                 } else if (name === 'plantwo') {
                     if (enterAmount2 >= 100) {
-                        await tokenContract.methods.approve(contractAddress, web3.utils.toWei(enterAmount2))
+                        await tokenContract.methods.approve(contractAddress, web3.utils.toWei("" + enterAmount2))
                             .send({
                                 from: account
                             })
                             .then(async (output) => {
-                                let dailyprofit2 = await contract.methods.Deposite(enterAmount2, upline, days1)
+                                let dailyprofit2 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount2), days2, upline)
                                     .send({
                                         from: account
                                     })
@@ -150,12 +150,12 @@ function BannerEndPlan() {
                 }
                 else if (name === 'planthree') {
                     if (enterAmount3 >= 100) {
-                        await tokenContract.methods.approve(contractAddress, enterAmount3)
+                        await tokenContract.methods.approve(contractAddress, web3.utils.toWei("" + enterAmount3))
                             .send({
                                 from: account
                             })
                             .then(async (output) => {
-                                let dailyprofit3 = await contract.methods.Deposite(enterAmount3, upline, days1)
+                                let dailyprofit3 = await contract.methods.Deposite(web3.utils.toWei("" + enterAmount3), days3, upline)
                                     .send({
                                         from: account
                                     })
@@ -242,20 +242,29 @@ function BannerEndPlan() {
     const enter1AmountCall = async (e) => {
         try {
             const name = e.target.name;
-            console.log("name", name);
+            // console.log("name", name);
+            const web3 = window.web3;
+            let contract = new web3.eth.Contract(abi, contractAddress);
+
             if (name === 'first_input') {
                 set1EnterAmount(e.target.value);
+                let check_reward = await contract.methods.check_reward(days1, web3.utils.toWei(e.target.value)).call();
+                set1withdrawAble(formatThousands(web3.utils.fromWei(check_reward)));
             } else if (name === 'second_input') {
                 set2EnterAmount(e.target.value);
+                let check_reward = await contract.methods.check_reward(days2, web3.utils.toWei(e.target.value)).call();
+                set2withdrawAble(formatThousands(web3.utils.fromWei(check_reward)));
             } else if (name === 'third_input') {
                 set3EnterAmount(e.target.value);
+                let check_reward = await contract.methods.check_reward(days3, web3.utils.toWei(e.target.value)).call();
+                set3withdrawAble(formatThousands(web3.utils.fromWei(check_reward)));
             }
         } catch (error) {
-            console.log("Error while checking locked account");
+            console.log("Error while checking locked account", error);
         }
     };
     function formatThousands(num) {
-        var numbr = parseFloat(parseFloat(num).toFixed(6));
+        var numbr = parseFloat(parseFloat(num).toFixed(2));
         // console.log("num", parseFloat(numbr));
         var values = numbr.toString().split(".");
         return (
@@ -367,13 +376,13 @@ function BannerEndPlan() {
                                     {/* <span className="bannerendvalue">0%</span> */}
                                     <input
                                         name="first_input"
-                                        className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"
+                                        className="stakeinput form-control px-1 mx-3" placeholder="0" type="Number"
                                         onChange={enter1AmountCall}
                                     />
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Withdrawable</span>
-                                    <span className="bannerendvalue">{withdrawnAble1}</span>
+                                    <span className="bannerendprofit">Total Reward</span>
+                                    <span className="bannerendvalue1 py-2">{withdrawnAble1}</span>
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
@@ -433,13 +442,13 @@ function BannerEndPlan() {
                                     {/* <span className="bannerendvalue">0%</span> */}
                                     <input
                                         name="second_input"
-                                        className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"
+                                        className="stakeinput form-control px-1 mx-3" placeholder="0" type="Number"
                                         onChange={enter1AmountCall}
                                     />
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Withdrawable</span>
-                                    <span className="bannerendvalue">{withdrawnAble2}</span>
+                                    <span className="bannerendprofit">Total Reward</span>
+                                    <span className="bannerendvalue1 py-2">{withdrawnAble2}</span>
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
@@ -498,13 +507,13 @@ function BannerEndPlan() {
                                     <span className="bannerendprofit">Enter Amount</span>
                                     {/* <span className="bannerendvalue">0%</span> */}
                                     <input
-                                        name="third_input" className="stakeinput btn-secondary form-control form-control-lg mx-3" placeholder="0" type="Number"
+                                        name="third_input" className="stakeinput form-control px-1 mx-3" placeholder="0" type="Number"
                                         onChange={enter1AmountCall}
                                     />
                                 </div>
                                 <div className="col-6">
-                                    <span className="bannerendprofit">Withdrawable</span>
-                                    <span className="bannerendvalue">{withdrawnAble3}</span>
+                                    <span className="bannerendprofit">Total Reward</span>
+                                    <span className="bannerendvalue1 py-2">{withdrawnAble3}</span>
                                 </div>
                             </div>
                             <div class="d-grid gap-2">
